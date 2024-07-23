@@ -11,6 +11,7 @@ import jakarta.annotation.PostConstruct;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
@@ -33,7 +34,15 @@ public class CursosController {
     private List<Curso> getCursos() {
         return cursos;
     }
-
-
+    @GetMapping(value= "/curso/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
+    private List<Curso> buscarCursos(@PathVariable("nombre") String nombre) {
+        List<Curso> aux= new ArrayList<>();
+        for (Curso c : cursos) {
+            if (c.getName().contains(nombre)){
+                aux.add(c);
+            }
+        }
+        return aux;
+    }
 
 }
