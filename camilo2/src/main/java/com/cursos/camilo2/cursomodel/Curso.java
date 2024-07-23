@@ -1,4 +1,4 @@
-package com.cursos.cursomodel;
+package com.cursos.camilo2.cursomodel;
 
 public class Curso {
 
