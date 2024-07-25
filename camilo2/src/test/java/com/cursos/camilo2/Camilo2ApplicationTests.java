@@ -17,7 +17,7 @@ class Camilo2ApplicationTests {
 	@Test
 	void testCursos()throws Exception{
 
-		mock.perform(get("/curso")).andDo(print());
+		mock.perform(get("/cursos")).andDo(print());
 	}
 
 }
