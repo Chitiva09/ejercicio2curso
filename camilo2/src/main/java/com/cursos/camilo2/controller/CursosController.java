@@ -10,9 +10,12 @@ import com.cursos.camilo2.cursomodel.Curso;
 import jakarta.annotation.PostConstruct;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class CursosController {
@@ -45,4 +48,39 @@ public class CursosController {
         return aux;
     }
 
+    @DeleteMapping(value= "curso/{nombre}")
+    public void delateCurse(@PatchVariable("nombre")String nombre){
+
+        cursos.removeIf(c->c.getName().equals(nombre));
+
+        /* 
+        for (Curso c : cursos) {
+            if (c.getName().contains(nombre)) {
+                cursos.delateCurse(c);
+                
+            }
+        }
+        */
+    }
+
+    @PostMapping (value= "curso", consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    public List<Curso> altaCurso(@RequestBody Curso curso){
+        cursos.add(curso);
+        return cursos;
+
+    }
+
+    @PuttMapping (value= "curso", consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    public List<Curso> actualizaCurso(@RequestBody Curso curso){
+        for (int i = 0; i < cursos.size(); i++) {
+            if (cursos.get(i).getName().equals(curso.getName())) {
+                cursos.set(i,curso);
+            }
+        }
+        return cursos;
+
+    }
+
 }
+
+
