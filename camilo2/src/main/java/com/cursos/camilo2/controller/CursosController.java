@@ -35,7 +35,7 @@ public class CursosController {
 
     }
 
-    @GetMapping(value = "cursos", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/cursos", produces = MediaType.APPLICATION_JSON_VALUE)
     private List<Curso> getCursos() {
         return cursos;
     }
@@ -50,21 +50,21 @@ public class CursosController {
         return aux;
     }
 
-    @DeleteMapping(value= "curso/{nombre}")
+    @DeleteMapping(value= "/curso/{nombre}")
     public void delateCurse(@PathVariable("nombre")String nombre){
 
         cursos.removeIf(c->c.getName().equals(nombre));
 
     }
 
-    @PostMapping (value= "curso", consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping (value= "/curso", consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public List<Curso> altaCurso(@RequestBody Curso curso){
         cursos.add(curso);
         return cursos;
 
     }
 
-    @PutMapping(value= "curso", consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value= "/curso", consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public List<Curso> actualizaCurso(@RequestBody Curso curso){
         for (int i = 0; i < cursos.size(); i++) {
             if (cursos.get(i).getName().equals(curso.getName())) {

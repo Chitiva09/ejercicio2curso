@@ -48,6 +48,8 @@ class Camilo2ApplicationTests {
 	@Test
 	@Order(3)
 	void testActualizacion() throws Exception{
-		mock.perform(put("/cursos").contentType(MediaType.APPLICATION_JSON).content("{\"nombe\":\"Angular 10\",\"duracion\":80,\"horario\":\"mañana\"}")).andDo(print());
+		mock.perform(put("/curso")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content("{\"nombe\":\"Angular 10\",\"duracion\":80,\"horario\":\"mañana\"}")).andDo(print());
 	}
 }

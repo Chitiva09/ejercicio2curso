@@ -2,7 +2,7 @@ package com.cursos.camilo2.cursomodel;
 
 public class Curso {
 
-    private String name;
+    private String name="";
     private int duration;
     private String timeTable;
 
